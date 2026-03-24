@@ -14,12 +14,12 @@ func main() {
 
 	//Validação dos valores
 	if l1 >= (l2+l3) || l2 >= (l1+l3) || l3 >= (l1+l2) {
-		f.Print("VALORES INVÁLIDOS")
+		f.Print("VALORES INVÁLIDOS\n")
 	} else if l1 == l2 && l2 == l3 {
-		f.Print("É um triângulo equilátero")
+		f.Print("É um triângulo equilátero\n")
 	} else if l1 != l2 && l2 != l3 && l1 != l3 {
-		f.Print("É um triângulo Escaleno")
+		f.Print("É um triângulo Escaleno\n")
 	} else if l1 == l2 || l1 == l3 || l2 == l3 {
-		f.Print("É um triângulo isóceles")
+		f.Print("É um triângulo isóceles\n")
 	}
 }
