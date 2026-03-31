@@ -9,6 +9,6 @@ func main() {
 		f.Scan(&numeros[i])
 	}
 	for i := len(numeros); i > 0; i-- {
-		f.Print(numeros[i-1])
+		f.Printf("Número na posição %d = %.2f\n", i, numeros[i-1])
 	}
 }
