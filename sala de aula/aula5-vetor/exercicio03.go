@@ -3,7 +3,7 @@ package main
 import f "fmt"
 
 func main() {
-	const limite int = 3
+	const limite int = 10
 	var numeros [limite]float64
 	for i := 0; i < limite; i++ {
 		f.Scan(&numeros[i])
