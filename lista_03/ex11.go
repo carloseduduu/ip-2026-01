@@ -10,7 +10,7 @@ func main() {
 
 func fatorial(n1 int) int {
 	resultado := 1
-	for i := n1; i > 0; i-- {
+	for i := 1; i <= n1; i++ {
 		resultado = resultado * i
 	}
 	return resultado
