@@ -6,16 +6,20 @@ import (
 
 func main() {
 	var (
-		base, exp int
+		base, exp float64
 	)
-	f.Print("Insira base e potência")
+	f.Print("Insira base e potência: ")
 	f.Scan(&base, &exp)
+	f.Printf("O valor %d elevado a %dª potência é igual a: %v\n", base, exp, potência(base, exp))
 
 }
 
-func potência(base, expoente int) int {
-	for i := 2; i < expoente; i++ {
-		resultado := base * resultado
-		base = resultado
+func potência(base, expoente float64) float64 {
+	var resultado float64 = 1
+	for i := 0.0; i < expoente; i++ {
+
+		resultado = resultado * base
+
 	}
+	return resultado
 }
