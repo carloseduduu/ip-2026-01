@@ -17,14 +17,14 @@ func main() {
 		lista = append(lista, valor)
 	}
 
-	for i := 0; i < len(lista); i++ {
+	for i := 0; i < len(lista)-2; i++ {
 
 		if lista[i] == 1 {
 
 			for i = i + 1; i < len(lista); i++ {
 				if lista[i] == 0 {
 
-					for i = i + 1; i < len(lista); i++ {
+					for i = i + 2; i < len(lista); i++ {
 						if lista[i] == 0 {
 							//posicao3 = lista[i]
 							contador += 1
