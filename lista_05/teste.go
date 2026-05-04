@@ -1,36 +1,24 @@
 package main
 
-import "fmt"
+import f "fmt"
 
 func main() {
-	vetorA := [10]int{5, 8, 5, 10, 5, 2, 8, 3, 3, 5}
-	var processados []int
+	var vetor [5]int
 
-	for i := 0; i < len(vetorA); i++ {
-		elemento := vetorA[i]
+	for i := 0; i < cap(vetor); i++ {
+		f.Scan(&vetor[i])
+	}
+	menorValor := vetor[0]
+	posicao := 0
 
-		// Verifica se já contamos este número antes
-		jaFoiContado := false
-		for _, p := range processados {
-			if p == elemento {
-				jaFoiContado = true
-				break
-			}
-		}
-
-		if !jaFoiContado {
-			contador := 0
-			for j := 0; j < len(vetorA); j++ {
-				if vetorA[j] == elemento {
-					contador++
-				}
-			}
-
-			if contador > 1 {
-				fmt.Printf("O valor %d se repete %d vezes\n", elemento, contador)
-			}
-			// Adiciona aos processados para não repetir a impressão
-			processados = append(processados, elemento)
+	for i, v := range vetor {
+		if v < menorValor {
+			menorValor = v
+			posicao = i
 		}
 	}
+
+	f.Printf("Valor posição 0: %d\nValor posição 4: %d\n", vetor[0], vetor[4])
+	f.Printf("Menor valor: %d\n", menorValor)
+	f.Printf("Posição menor valor: %d", posicao)
 }

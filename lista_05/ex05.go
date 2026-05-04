@@ -11,13 +11,14 @@ func main() {
 	for i := 0; i < len(vetor); i++ {
 		f.Scan(&vetor[i])
 	}
+	menor = vetor[0]
+	posicao = 0
 
-	for i := 0; i < len(vetor)-1; i++ {
-
-		if vetor[i] < vetor[i+1] {
-
+	for i, v := range vetor {
+		if v < menor {
+			menor = v
+			posicao = i
 		}
-
 	}
 
 	f.Printf("O menor elemento do vetor é %d, e sua posição dentro do vetor é %d", menor, posicao)
