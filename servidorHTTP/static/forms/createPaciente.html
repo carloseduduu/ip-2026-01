@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Paciente</title>
+    <link rel="stylesheet" href="../styles/createAccount.style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h3>Registre o paciente</h3>
+        <form method=POST action="/createPaciente">
+            <div>
+                <label>Nome:</label>
+                <input name="nome" placeholder="Digite o seu nome aqui" value="" type="text">
+            </div>
+            <div>
+                <label>Número do SUS:</label>
+                <input name="cod_sus" placeholder="Digite o Número do SUS" value="" type="number">
+            </div>
+            <div>
+                <label>Data de nascimento:</label>
+                <input name="data_nascimento" value="" type="date">
+            </div>
+            <div>
+                <label>Sexo:</label>
+                <input name="sexo" value="" type="text">
+            </div>
+            <div>
+                <label> Tipo Sanguíneo:</label>
+                <input type="tipo_sanguineo" value="" type="text">
+            </div>
+
+            <button type="submit"><span>Concluir</span></button>
+        </form>
+    </div>
+
+</body>
+
+</html>
