@@ -14,7 +14,7 @@
         <form method="POST" action="/updatePaciente">
             <div>
                 <label>Número do SUS:</label> <!-- FAZER A CONFIRMAÇÃO DO USUÁRIO PELO NÚMERO DO SUS-->
-                <input name="cod_sus" placeholder="Digite o novo Número SUS (Obrigatório)" type="number" required>
+                <input name="cod_sus" placeholder="Digite o Número único SUS (Obrigatório)" type="number" required>
             </div>
             <div>
                 <label>Nome:</label>
@@ -44,19 +44,6 @@
                     <option value="O+">O+</option>
                     <option value="O-">O-</option>
                 </select>
-            </div>
-
-            <div>
-                <label>Nova senha:</label>
-                <input name="newPassword" placeholder="Digite a nova senha (opcional)" type="password">
-            </div>
-            <div>
-                <label>Email atual:</label>
-                <input name="currentEmail" placeholder="Digite a senha atual" type="text" required>
-            </div>
-            <div>
-                <label>Senha atual:</label>
-                <input name="currentPassword" placeholder="Digite a senha atual" type="password" required>
             </div>
             <button type="submit"><span>Atualizar</span></button>
         </form>

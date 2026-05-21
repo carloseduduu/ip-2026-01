@@ -14,41 +14,40 @@ func UpdatePacienteHandler(response http.ResponseWriter, request *http.Request) 
 	}
 
 	// Obtém os valores do formulário
-	username := request.FormValue("username")
-	email := request.FormValue("email")
-	bornDate := request.FormValue("bornDate")
-	newPassword := request.FormValue("newPassword")
-	currentPassword := request.FormValue("currentPassword")
-	currentEmail := request.FormValue("currentEmail")
+	cod_sus := request.FormValue("cod_sus")
+	nome := request.FormValue("nome")
+	data_nascimento := request.FormValue("bornDate")
+	sexo := request.FormValue("sexo")
+	tipo_sanguineo := request.FormValue("tipo_sanguineo")
+	
 
-	fmt.Println(currentEmail, currentPassword)
+	fmt.Println(cod_sus)
 
 	// Verifica se a senha atual está correta
-	encryptedCurrentPassword := utils.Encrypt(currentPassword)
-	isValidUser, err := utils.ValidateUser(currentEmail, encryptedCurrentPassword)
+	isValidUser, err := utils.ValidateUser(cod_sus)
 	if err != nil || !isValidUser {
-		http.Error(response, "Senha atual ou email inválidos", http.StatusUnauthorized)
+		http.Error(response, "Número do SUS inválido!(Não pode ser alterado!)", http.StatusUnauthorized)
 		return
 	}
 
 	// Cria um mapa para armazenar os campos a serem atualizados
 	updates := make(map[string]string)
 
-	if username != "" {
-		updates["username"] = username
+	if nome != "" {
+		updates["nome"] = nome
 	}
-	if email != "" {
-		updates["email"] = email
+	if data_nascimento != "" {
+		updates["bornDate"] = data_nascimento
 	}
-	if bornDate != "" {
-		updates["born_date"] = bornDate
+	if sexo != "" {
+		updates["sexo"] = sexo
 	}
-	if newPassword != "" {
-		updates["password"] = utils.Encrypt(newPassword) // Criptografa a nova senha
+	if tipo_sanguineo != "" {
+		updates["tipo_sanguineo"] = tipo_sanguineo//utils.Encrypt(newPassword) // Criptografa a nova senha
 	}
 
 	// Atualiza os campos informados no banco de dados
-	err = utils.UpdateUser(currentEmail, updates)
+	err = utils.UpdateUser(cod_sus, updates)
 	if err != nil {
 		http.Error(response, "Erro ao atualizar os dados no banco de dados", http.StatusInternalServerError)
 		fmt.Println(err)
