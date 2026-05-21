@@ -1,7 +1,7 @@
 # Servidor HTTP com GO
 
 ## Visão Geral
-Este projeto é um servidor HTTP desenvolvido em GoLang que permite a criação, autenticação, atualização e exclusão de contas de usuários. Ele utiliza PostgreSQL como banco de dados e fornece uma interface web simples para interação com os usuários.
+Este projeto é um servidor HTTP desenvolvido em GoLang que permite a criação, autenticação, atualização e exclusão pacientes de um sistema de saúde. Ele utiliza PostgreSQL como banco de dados e fornece uma interface web simples para interação com os usuários.
 
 ---
 
@@ -11,7 +11,7 @@ Este projeto é um servidor HTTP desenvolvido em GoLang que permite a criação,
   - **`handlers/`**: Lida com as requisições HTTP e processa os dados.
   - **`utils/`**: Contém funções auxiliares, como conexão ao banco de dados e manipulação de dados.
 - **`static/`**: Contém os arquivos estáticos (HTML e CSS) que compõem o front-end da aplicação.
-  - **`forms/`**: Formulários HTML para criar, atualizar, excluir contas e fazer login.
+  - **`forms/`**: Formulários HTML para criar, atualizar, excluir pacientes.
   - **`styles/`**: Arquivos CSS para estilização das páginas.
 
 ---
@@ -47,13 +47,12 @@ Este projeto é um servidor HTTP desenvolvido em GoLang que permite a criação,
      ```
    - Crie a tabela de usuários no banco de dados com o seguinte comando SQL:
      ```sql
-     CREATE TABLE users (
-         id SERIAL PRIMARY KEY,
-         username VARCHAR(100) NOT NULL,
-         email VARCHAR(150) NOT NULL UNIQUE,
-         born_date DATE NOT NULL,
-         password VARCHAR(255) NOT NULL,
-         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+     CREATE TABLE pacientes (
+         cod_sus SERIAL PRIMARY KEY NOT NULL,
+         nome VARCHAR(100) NOT NULL,
+         sexo VARCHAR(150),
+         data_nascimento DATE,
+         tipo_sanguineo VARCHAR(150),
      );
      ```
 
@@ -81,46 +80,46 @@ Este projeto é um servidor HTTP desenvolvido em GoLang que permite a criação,
 
 ## Funcionalidades
 ### Rotas Principais:
-- **`/`**: Página inicial com links para os formulários.
-- **`/forms/createAccount.html`**: Formulário para criar uma nova conta.
-- **`/forms/login.html`**: Formulário para login.
-- **`/forms/updateAccount.html`**: Formulário para atualizar os dados da conta.
-- **`/forms/deleteAccount.html`**: Formulário para excluir uma conta.
+- **`/`**: Página inicial com links para as ações.
+- **`/forms/createPaciente.html`**: Formulário para criar um novo paciente.
+- **`/forms/updatePaciente.html`**: Formulário para atualizar os dados do Paciente.
+- **`/forms/deletePaciente.html`**: Formulário para excluir uma conta.
+-**`/forms/listPaciente.html`**: Tabela de exibição dos Pacientes cadastrados.
 
 ### Handlers:
-- **`FormHandler`**: Processa a criação de contas.
-- **`LoginHandler`**: Valida as credenciais e exibe o perfil do usuário.
-- **`UpdateAccountHandler`**: Atualiza os dados do usuário no banco de dados.
-- **`DeleteAccountHandler`**: Remove a conta do usuário.
+- **`createPacienteHandler`**: Processa a criação de Pacientes.
+- **`UpdatePacienteHandler`**: Atualiza os dados do paciente no banco de dados.
+- **`DeletePacienteHandler`**: Remove a conta do usuário.
+-**`listPacienteHandler`**: Processa a exbição da tabela de pacientes.
 
 ---
 
 ## Estrutura de Pastas
+
 ```
 .env
-docker-compose.yml
 go.mod
 app/
   main.go
   handlers/
-    formHandler.go
-    loginHandler.go
-    updateAccountHandler.go
-    deleteAccountHandler.go
+    createPacienteHandler.go
+    deletePacienteHandler.go
+    listPcienteHandler.go
+    updatePacienteHandler.go
   utils/
     connectToDB.go
     encrypt.go
     validateUser.go
     updateUser.go
     deleteUser.go
-    getUserByEmail.go
 static/
   index.html
   forms/
-    createAccount.html
+    createPaciente.html
     login.html
-    updateAccount.html
-    deleteAccount.html
+    updatePaciente.html
+    deletePaciente.html
+    listPaciente.html
   styles/
     index.style.css
     createAccount.style.css

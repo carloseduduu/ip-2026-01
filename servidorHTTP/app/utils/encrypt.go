@@ -1,5 +1,6 @@
 package utils
 
+/*
 // Importa os pacotes necessários para a função de criptografia
 import (
 	"crypto/md5"   // Usado para gerar hashes MD5
@@ -17,3 +18,4 @@ func Encrypt(data string) (hash string) {
 	// Retorna o hash gerado
 	return
 }
+*/

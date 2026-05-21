@@ -8,9 +8,9 @@ import (
 )
 
 // UpdateUser atualiza os dados de um usuário no banco de dados
-func UpdateUser(currentEmail string, updates map[string]string) error {
+func UpdatePaciente(cod_sus string, updates map[string]string) error {
 	// Cria uma lista para armazenar os trechos da query SQL que serão atualizados
-	setClauses := []string{}
+	coluna_valor := []string{}
 	// Cria uma lista para armazenar os valores que serão passados como parâmetros na query
 	values := []interface{}{}
 	// Inicializa um contador para numerar os placeholders ($1, $2, etc.)
@@ -19,17 +19,17 @@ func UpdateUser(currentEmail string, updates map[string]string) error {
 	// Itera sobre os campos e valores fornecidos no mapa de atualizações
 	for column, value := range updates {
 		// Adiciona o trecho "coluna = $i" à lista de trechos da query
-		setClauses = append(setClauses, fmt.Sprintf("%s = $%d", column, i))
+		coluna_valor = append(coluna_valor, fmt.Sprintf("%s = $%d", column, i))
 		// Adiciona o valor correspondente à lista de valores
 		values = append(values, value)
 		// Incrementa o contador
 		i++
 	}
 
-	// Adiciona o email atual como condição para identificar o usuário a ser atualizado
-	values = append(values, currentEmail)
+	// Adiciona o número do SUS atual como condição para identificar o usuário a ser atualizado
+	values = append(values, cod_sus)
 	// Constrói a query SQL completa com os trechos de atualização e a condição
-	query := fmt.Sprintf("UPDATE users SET %s WHERE email = $%d", strings.Join(setClauses, ", "), i)
+	query := fmt.Sprintf("UPDATE pacientes SET %s WHERE cod_sus = $%d", strings.Join(coluna_valor, ", "), i)
 
 	// Executa a query no banco de dados, passando os valores como parâmetros
 	_, err := DB.Exec(query, values...)

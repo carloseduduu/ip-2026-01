@@ -1,44 +1,133 @@
-*{
-    list-style: none;
-    text-decoration: none;
+/* ==========================================================================
+   1. VARIÁVEIS DE DESIGN (Tokens de Cores do Sistema de Saúde)
+   ========================================================================== */
+:root {
+    --SUS-azul-escuro: #004077;    /* Azul institucional forte para contrastes */
+    --SUS-azul-medio: #0072b9;     /* O seu azul original para links e destaques */
+    --SUS-ciano: #26a9c4;          /* Tom de ciano para gradientes e detalhes */
+    --fundo-suave: #f0f5f8;        /* Branco-azulado clínico, descansa a vista */
+    --texto-escuro: #2c3e50;       /* Cinza escuro de alta legibilidade para títulos */
+    --branco: #ffffff;
+    --sombra-suave: 0 8px 30px rgba(0, 64, 119, 0.08);
+}
+
+/* ==========================================================================
+   2. RESET & REGRAS GERAIS
+   ========================================================================== */
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-
 }
 
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--fundo-suave);
+    color: var(--texto-escuro);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   3. TOPO / LOGO
+   ========================================================================== */
+.topo {
+    text-align: center;
+    padding: 2.5rem 1rem 1rem 1rem;
+}
+
+.topo img {
+    max-width: 140px;
+    height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* ==========================================================================
+   4. CONTAINER PRINCIPAL (Transformado em Card de Dashboard)
+   ========================================================================== */
 main {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
-
-
-    nav{
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
-    }
-
-    ul{
-        display: flex;
-        gap: 1rem;
-        border-radius: 20%;
-        border-color: #000;
-    }
+    padding: 2rem;
 }
 
-@media (max-width: 768px) {
+/* O Nav agora funciona como o "Card do Menu" */
+main nav {
+    background: var(--branco);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: var(--sombra-suave);
+    width: 100%;
+    max-width: 420px; /* Largura ideal e elegante para o menu */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Título inserido dinamicamente ou estilizado caso exista */
+main h1 {
+    font-size: 1.4rem;
+    color: var(--SUS-azul-escuro);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   5. LISTA DE OPÇÕES / BOTÕES
+   ========================================================================== */
+main ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaçamento mais confortável entre opções */
+    width: 100%;
+}
+
+main li {
+    background: linear-gradient(135deg, var(--SUS-ciano) 0%, var(--SUS-azul-medio) 100%);
+    border-radius: 10px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+main li a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   6. INTERAÇÕES E ANIMAÇÕES
+   ========================================================================== */
+main li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 114, 185, 0.35);
+    filter: brightness(1.05); /* Dá um leve brilho sutil ao passar o mouse */
+}
+
+main li:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 114, 185, 0.2);
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE (Mobile First / Ajustes de Tela)
+   ========================================================================== */
+@media (max-width: 480px) {
     main {
         padding: 1rem;
-        gap: 1rem;
+        align-items: flex-start; /* No mobile, o menu sobe um pouco, melhor ergonomia */
     }
 
-    ul {
-        flex-direction: column;
-        gap: 0.5rem;
+    main nav {
+        padding: 2rem 1.25rem;
+        border-radius: 12px;
     }
 }

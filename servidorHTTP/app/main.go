@@ -4,11 +4,11 @@ package main
 import (
 	"fmt" // Usado para imprimir mensagens no terminal
 	// Importa os handlers definidos na aplicação
-	"log"                    // Usado para registrar mensagens de erro ou log
-	"net"                    // Usado para obter informações de rede, como IPs
+	"log" // Usado para registrar mensagens de erro ou log
+	"net" // Usado para obter informações de rede, como IPs
 	"net/http"
-	"servidorHTTP/app/handlers"               // Usado para criar o servidor HTTP
-	"servidorHTTP/app/utils" // Importa utilitários como conexão ao banco de dados
+	"servidorHTTP/app/handlers" // Usado para criar o servidor HTTP
+	"servidorHTTP/app/utils"    // Importa utilitários como conexão ao banco de dados
 )
 
 func main() {
@@ -22,15 +22,15 @@ func main() {
 	http.Handle("/", fileserver)
 
 	// Define a rota "/hello" e associa ao handler HelloHandler
-	//  http.HandleFunc("/hello", handlers.HelloHandler)
+	http.HandleFunc("/hello", handlers.HelloHandler)
 
 	http.HandleFunc("/createPaciente", handlers.CreatePaciente)
 
-//	http.HandleFunc("/listPacientes", handlers.listPacientes)
+	http.HandleFunc("/listPaciente", handlers.ListPacientes)
 
 	http.HandleFunc("/updatePaciente", handlers.UpdatePacienteHandler)
 
-//	http.HandleFunc("/deletePaciente", handlers.deletePaciente)
+	http.HandleFunc("/deletePaciente", handlers.DeletePaciente)
 
 	// Define a rota "/form" e associa ao handler FormHandler
 	//http.HandleFunc("/form", handlers.FormHandler)

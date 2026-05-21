@@ -1,8 +1,8 @@
-:root{
+:root {
     --blue-inf: #0072b9;
 }
 
-*{
+* {
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
@@ -10,28 +10,70 @@
     margin: 0;
 }
 
-#container{
+
+
+
+.container-botao {
+    display: flex;
+    justify-content: center;
+    /* Centraliza o botão horizontalmente */
+    align-items: center;
+    /* Centraliza o botão verticalmente */
+    padding: 40px;
+}
+
+.meu-botao {
+    background-color: #007bff;
+    /* Cor de fundo azul */
+    color: #ffffff;
+    /* Cor do texto branco */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 1px 100px;
+    /* Espaçamento interno */
+    border: none;
+    /* Remove a borda padrão */
+    border-radius: 8px;
+    /* Cantos arredondados */
+    cursor: pointer;
+    /* Mostra o ícone de 'mãozinha' ao passar o mouse */
+    transition: background-color 0.3s ease;
+    /* Efeito suave ao passar o mouse */
+}
+
+/* Efeito ao passar o mouse */
+.meu-botao:hover {
+    background-color: #0056b3;
+    /* Tom de azul mais escuro */
+}
+
+
+
+#container {
     background-color: var(--blue-inf);
-    height: 100vh;  
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 2rem;
 
-    h3{
+    h3 {
         color: white;
     }
-    
-    form{
-        background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    form {
+       /* background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
+
         @media (max-width: 768px) {
             width: 80%;
         }
+
         @media (min-width: 769px) {
             width: 20%;
         }
+
         padding: 1rem;
         border-radius: 1rem;
         display: flex;
@@ -39,29 +81,61 @@
         flex-direction: column;
         align-items: center;
         gap: 1rem;
-        div{
+
+        div {
             width: 80%;
             display: flex;
             justify-content: start;
             align-items: start;
             flex-direction: column;
             gap: .5rem;
-            input{
+
+            /*input {
                 border-radius: 6px;
                 width: 100%;
                 border: solid 1px var(--blue-inf);
-                &:focus{
+
+                &:focus {
                     transition: all .5s ease-in-out;
                     outline: none;
                     transform: scale(1.1);
                 }
-            }
+            }*/
         }
 
-        button[type = "submit"]{
+       /* button[type="submit"] {
             border: solid 1px var(--blue-inf);
             padding: 4px 8px;
             border-radius: 6px;
-        }
+        }*/
+table {
+  border-collapse: collapse; /* Collapses borders into single lines */
+  width: 100%;
+}
+
+th {
+  background-color: #007bff; /* Deep blue for header */
+  color: white;              /* White text for contrast */
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+/* Zebra striping for even rows */
+tr:nth-child(even) {
+  background-color: #f2f9ff; /* Very light blue tint */
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #e6f3ff;
+}
+
     }
+
+
 }

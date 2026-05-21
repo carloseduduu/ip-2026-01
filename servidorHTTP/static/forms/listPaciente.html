@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidor HTTP em GoLang</title>
+    <link rel="stylesheet" href="../styles/login.style.css">
+    <style>
+        :root {
+            --blue-inf: #0072b9;
+            --blue-suave: #eef7fc;
+            /* Tom clínico bem claro para linhas ou hover */
+            --texto-escuro: #2c3e50;
+            /* Cinza escuro para melhor leitura */
+            --borda-suave: #dbe2e6;
+            /* Substitui o preto puro (#000) por algo mais leve */
+            --branco: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            max-width: 900px;
+            /* Limita a largura para não esticar demais em telas gigantes */
+            border-collapse: collapse;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: var(--texto-escuro);
+            background-color: var(--branco);
+            box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+            /* Sombra leve de elevação */
+
+            /* TODO: Defina uma margem vertical para afastar a tabela do título (h3) e do botão */
+        }
+
+        th {
+            background-color: var(--blue-inf);
+            color: var(--branco);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            /* Deixa os títulos em caixa alta sutil */
+            letter-spacing: 0.5px;
+            padding: 14px 16px;
+        }
+
+        td {
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            /* Substituição da borda preta por uma linha fina e elegante */
+            border-bottom: 1px solid var(--borda-suave);
+        }
+
+        tbody tr:nth-child(even) {
+            color: aqua
+                /* TODO: Pesquise e adicione uma cor de fundo sutil (ex: #f8f9fa) para as linhas pares */
+        }
+
+        td[colspan="5"] {
+            color: #7f8c8d;
+            font-style: italic;
+            padding: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <h3>Listar pacientes do SISTEMA</h3>
+        <table class="">
+            <thead>
+                <tr>
+                    <th>Número SUS</th>
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>Sexo</th>
+                    <th>Tipo Sanguíneo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop dinâmico do Golang -->
+                {{range .}}
+                <tr>
+                    <td>{{.Cod_sus}}</td>
+                    <td>{{.Nome}}</td>
+                    <td>{{.Data_nascimento}}</td>
+                    <td>{{.Sexo}}</td>
+                    <td>{{.Tipo_sanguineo}}</td>
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="5">Nenhum dado encontrado no banco.</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+
+        <div class="container-botao">
+            <form action="../index.html">
+                <button class="meu-botao">Página inicial</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
